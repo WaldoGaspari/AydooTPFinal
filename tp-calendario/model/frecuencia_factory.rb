@@ -1,6 +1,3 @@
-/require_relative 'frecuencia_diaria'/
-require_relative 'frecuencia_diaria'
-
 class FrecuenciaFactory
 
   attr_accessor :frecuencia_seleccionada
@@ -15,17 +12,12 @@ class FrecuenciaFactory
 											
   def nueva_frecuencia(frecuencia)
   	frecuencia_a_minuscula = frecuencia.downcase
-  	/@diccionario_frecuencias = {"diaria" => FrecuenciaDiaria.new}/
   	if @diccionario_frecuencias[frecuencia_a_minuscula] == nil
   	  raise Exception, "No se puede aplicar dicha frecuencia. Las frecuencias disponibles son : 'diaria'-'semanal'-'mensual'-'anual'"
   	else
   	  @frecuencia_seleccionada = @diccionario_frecuencias[frecuencia_a_minuscula]  	
   	end
   	  return @frecuencia_seleccionada
-  end
-
-  def get_frecuencia_seleccionada
-  	return @frecuencia_seleccionada
   end
 
 end 
