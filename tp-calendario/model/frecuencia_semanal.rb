@@ -1,18 +1,11 @@
-class FrecuenciaSemanal < ManejadorRecurrencia
+require 'date'
 
-  attr_reader :tipo_frecuencia = "semanal"
-
-  def iniciar_frecuencia_aceptada(peticion_frecuencia)
-  	if frecuencia == @tipo_frecuencia
-  	  "Deberia sumar de a 7 dias" 
-      /metodo_a_impletar/
-  	  return true 
-  	else
-  	  return false
-  	end
+class FrecuenciaSemanal
+  
+  def anotar_evento_en_calendario(fecha_inicio)
+  	fecha = DateTime.parse(fecha_inicio)
+    fecha_nueva = fecha.next_day(7)
+    return fecha_nueva.iso8601	
   end
 
-  def metodo_a_implementar
-  end
-
-end
+end 	
