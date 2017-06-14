@@ -18,9 +18,30 @@ get '/calendarios' do
 	end
 end
 
-get '/calendarios' do
+get '/calendarios/nombre' do
 	begin
 		repositorio = repositorioCalendario.obtenerCalendario(params['x'])
 		"#{repositorio}"
 	end
+
+post '/eventos'
+	begin
+
+	end
+
+delete '/eventos/id'
+	begin
+
+	end
+
+get '/eventos'
+	begin
+
+	end
+
+get '/eventos?calendario=calendarioNombre'
+	begin
+
+	end
+
 end

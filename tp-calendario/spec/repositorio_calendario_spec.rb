@@ -22,10 +22,6 @@ let(:repositorioCalendario) { RepositorioCalendario.new }
    	it 'obtener calendarios guardardos en un archivo' do
 	  expect(repositorioCalendario.obtenerCalendarios())
    	end
-   	
-   	it 'obtener calendario guardardo en un archivo' do
-	  expect(repositorioCalendario.obtenerCalendario("Mi Calendario")).to eq("Mi Calendario")
-   	end
-   	
+  	
   end
 end
