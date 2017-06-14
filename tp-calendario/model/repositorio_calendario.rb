@@ -9,21 +9,25 @@ class RepositorioCalendario
 	end
 	
 	def obtenerCalendarios()
-		archivo = File.open("archivoCalendario.txt", 'r')
-		archivo.readlines.each do |nombre|
-			puts nombre
+		lineas = []
+		archivo = File.open("archivoCalendario.txt")
+		archivo.each do |nombre|
+			lineas << nombre
 		end
 		archivo.close
+		return lineas
 	end
 	
 	def obtenerCalendario(nombreCalendario)
+		contenido = " "
 		archivo = File.open("archivoCalendario.txt", 'r')
-		archivo.readlines.each do |nombre|
+		archivo.each do |nombre|
 			if nombre == nombreCalendario
-				puts nombre
+				contenido = nombre
 			end
 		end
 		archivo.close
+		return contenido
 	end
 end
 
