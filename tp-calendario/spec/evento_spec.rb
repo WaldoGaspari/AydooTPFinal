@@ -68,4 +68,20 @@ describe 'Evento' do
     expect(valor_obtenido).to eq(valor_esperado)
   end
 
+  it 'deberia devolver una lista con todas las fechas entre las horas de inicio y fin' do
+    @evento.set_inicio("2017-03-01T18:00:00-03:00")
+    @evento.set_fin("2017-03-01T22:00:00-03:00")
+    fecha_fin = "2017-03-03T23:00:00-03:00"
+    @evento.calcular_recurrencia_horas
+    fecha1 = DateTime.parse("2017-03-01T18:00:00-03:00")
+    fecha2 = DateTime.parse("2017-03-02T18:00:00-03:00")
+    fecha3 = DateTime.parse("2017-03-03T18:00:00-03:00")
+    valor_esperado = 1
+    valor_obtenido = @evento.get_lista
+    expect(valor_obtenido).to eq(valor_esperado)
+  end
+
+
+
+
  end

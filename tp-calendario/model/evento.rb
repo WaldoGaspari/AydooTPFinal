@@ -37,6 +37,18 @@ class Evento
     end
   end
 
+  def calcular_recurrencia_horas
+    frecuencia_actual = @fabrica_frecuencia.nueva_frecuencia("diaria")
+    fecha_actual = @inicio_evento
+    fecha_fin = @fin_evento
+    i = 0
+    while fecha_actual <= fecha_fin do
+      @lista_fechas[i] = fecha_actual
+      fecha_actual = frecuencia_actual.calcular_fecha_siguiente(fecha_actual)
+      i = i + 1
+    end
+  end
+
   def get_lista
     return @lista_fechas
   end
