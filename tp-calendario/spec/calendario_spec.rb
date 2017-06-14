@@ -18,7 +18,7 @@ describe 'Calendario' do
     end
 		
     it 'crear un calendario sin nombre da una excepcion' do
-	    expect{Calendario.new ""}.to raise_exception
+	  expect{Calendario.new ""}.to raise_exception
     end
   
   end
