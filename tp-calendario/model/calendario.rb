@@ -9,4 +9,16 @@ class Calendario
 	  @nombre = nombre
   end
 
+  def crear_evento(evento)
+
+  end
+
+  def eliminar_evento()
+
+  end
+
+  def modificar_evento()
+    
+  end
+
 end
