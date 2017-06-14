@@ -1,3 +1,5 @@
+require "date"
+
 class Evento
   
   attr_reader :nombre_evento, :id_evento
@@ -5,11 +7,10 @@ class Evento
                 :recurrecia_evento, :lista_fechas, :fabrica_frecuencia
 
   
-  def initialize(nombre, id, nombre_calendario, recurrencia)
+  def initialize(nombre, id, nombre_calendario)
     @nombre_evento = nombre
     @id_evento = id
     @nombre_calendario_evento = nombre_calendario
-    @recurrecia_evento = recurrencia
     @lista_fechas = []
     @fabrica_frecuencia = FrecuenciaFactory.new
   end
@@ -23,17 +24,21 @@ class Evento
     fecha = DateTime.parse(fin_nuevo)
   	@fin_evento = fecha
   end
-  
-  def set_recurrencia(recurrencia)
-    frecuencia_evento = DateTime.parse(recurrencia.frecuencia)
-    fecha_fin = recurrencia.fecha_fin
+
+  def calcular_recurrencia(recurrencia)
+    frecuencia_actual = @fabrica_frecuencia.nueva_frecuencia(recurrencia.get_frecuencia)
+    fecha_fin = recurrencia.get_fecha_fin
     fecha_actual = @inicio_evento
     i = 0
-    while fecha_actual =< fecha_fin
-      lista_fechas[i] = fecha_actual
-      @fecha_actual = @frecuencia_seleccionada.calcular_fecha_siguiente(fecha_actual)
-      i++
+    while fecha_actual <= fecha_fin do
+      @lista_fechas[i] = fecha_actual
+      fecha_actual = frecuencia_actual.calcular_fecha_siguiente(fecha_actual)
+      i = i + 1
     end
+  end
+
+  def get_lista
+    return @lista_fechas
   end
 
 end 
